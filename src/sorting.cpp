@@ -87,11 +87,13 @@ void insertion_sort(ScoreEntry *data, int count, Comparator before,
 int linear_search_name(const ScoreEntry *data, int count,
                        const std::string &name, long &comparisons) {
   // TODO (Task 2)
-  (void)data;
-  (void)count;
-  (void)name;
-  (void)comparisons;
-  return -1;
+    for (int i = 0; i < count; i++) {
+        ++comparisons;
+        if (data[i].name == name) {
+            return i;
+        }
+        return -1;
+    }
 }
 
 int binary_search_name(const ScoreEntry *data, int count,
