@@ -69,10 +69,20 @@ void merge_sort(ScoreEntry *data, int count, Comparator before,
 void selection_sort(ScoreEntry *data, int count, Comparator before,
                     long &comparisons) {
   // TODO (Task 2)
-  (void)data;
-  (void)count;
-  (void)before;
-  (void)comparisons;
+    for (int k = 0; k < count - 1; k++) {
+        int swap_index = k;
+        for (int i = k + 1; i < count; i++) {
+            ++comparisons;
+            if (before(data[i], data[swap_index])) {
+                swap_index = i;
+            }
+        }
+        if (swap_index != k) {
+            ScoreEntry temp = data[k];
+            data[k] = data[swap_index];
+            data[swap_index] = temp;
+        }
+    }
 }
 
 void insertion_sort(ScoreEntry *data, int count, Comparator before,
