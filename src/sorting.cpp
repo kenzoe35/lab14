@@ -110,8 +110,8 @@ int linear_search_name(const ScoreEntry *data, int count,
         if (data[i].name == name) {
             return i;
         }
-        return -1;
     }
+    return -1;
 }
 
 int binary_search_name(const ScoreEntry *data, int count,
