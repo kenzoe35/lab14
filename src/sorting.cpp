@@ -109,9 +109,22 @@ int linear_search_name(const ScoreEntry *data, int count,
 int binary_search_name(const ScoreEntry *data, int count,
                        const std::string &name, long &comparisons) {
   // TODO (Task 3)
-  (void)data;
-  (void)count;
-  (void)name;
-  (void)comparisons;
-  return -1;
+    int low = 0;
+    int high = count - 1;
+
+    while (low <= high) {
+        ++comparisons;
+        int mid = low + (high - low) / 2;
+
+        if (data[mid].name == name) {
+            return mid;
+        }
+        else if (data[mid].name > name) {
+            high = mid - 1;
+        }
+        else {
+            low = mid + 1;
+        }
+    }
+    return -1;
 }
